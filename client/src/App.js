@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {Button} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
