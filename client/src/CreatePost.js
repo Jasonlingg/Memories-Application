@@ -1,28 +1,38 @@
 import {Button, Form} from "react-bootstrap";
 import {useNavigate} from 'react-router-dom';
 import {useState, useEffect} from "react";
+import axios from 'axios';
+
 function CreatePost() {
-    const navigate = useNavigate;
+    const navigate = useNavigate();
     const [post, setPost] = useState({
         title: "",
         description: "",
     });
 
-    const handleChange = (event) => {
-        const { name, value} = event.target;
-
+    const handleChange = (e) => {
+        const {name, value} = e.target;
         setPost((prev) => {
             return{
                 ...prev,
                 [name]: value,
+            };
+        });
+    };
 
-            }
-        })
+    const handleClick = (e) => {
+        e.preventDefault();
+        axios
+            .post("/create", post)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err))
     };
 
     useEffect(() => {
         console.log(post);
     }, [post]);
+
+
     return(
         <div>
             <h1 style={{textAlign: "center"}}>Create a post</h1>
@@ -43,9 +53,16 @@ function CreatePost() {
                    onChange={handleChange} 
                    />
                 </Form.Group>
+                <Button
+            onClick={handleClick}
+            variant="outline-success"
+            style={{ width: "100%", marginBottom: "1rem" }}
+        >
+          CREATE POST
+        </Button>
             </Form>
             <Button 
-            style={{width: "100%"}} 
+            style={{width: "100%", marginBottom:"1rem"}} 
             variant={"outline-dark"}
             onClick={() => navigate(-1)}
             >BACK
