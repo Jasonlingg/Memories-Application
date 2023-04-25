@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 function Posts() {
     const navigate =useNavigate();
     const [posts, setPosts] = useState([]);
-    
+    const [updatedPost, setUpdatedPost] = useState({});
     const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -32,9 +32,28 @@ const deletePost = (id) => {
 };
 
 const updatePost = (post) => {
-    console.log(post);
+    setUpdatedPost(post);
     handleShow();
-}
+};
+
+const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUpdatedPost((prev) => {
+        return({
+            ...prev,
+            [name]: value,
+        });
+    });
+};
+
+const saveUpdatedPost = (e) => {
+    axios.put(`/update/${updatedPost._id}`, updatedPost)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+
+    handleClose();
+    window.location.reload();
+};
     return(
         <div 
         key={posts._id}
@@ -50,11 +69,22 @@ const updatePost = (post) => {
         </Modal.Header>
         <Modal.Body>
             <Form>
-                <Form.GrouP>
-                    <Form.Control style={{marginBopttom:"1rem"}} placeholder="title"/>
-
-                    <Form.Control placeholder="description"/>
-                </Form.GrouP>
+                <Form.Group>
+                    <Form.Control 
+                    style={{marginBopttom:"1rem"}} 
+                    placeholder="title"
+                    name="title"
+                    value={updatedPost.title ? updatedPost.title : ""}
+                    onChange={handleChange}
+                    />
+                    <Form.Control 
+                    style={{marginBopttom:"1rem"}} 
+                    placeholder="description"
+                    name="description"
+                    value={updatedPost.description ? updatedPost.description : ""}
+                    onChange={handleChange}
+                    />
+                </Form.Group>
             </Form>
             </Modal.Body>
         <Modal.Footer>
@@ -63,7 +93,8 @@ const updatePost = (post) => {
             onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose} onClick={handleShow}>
+          <Button variant="primary" 
+          onClick={saveUpdatedPost} >
             Save Changes
           </Button>
         </Modal.Footer>

@@ -44,6 +44,15 @@ app.delete("/delete/:id", (req, res) => {
     .then((doc) => console.log(doc))
     .catch((err) => console.log(err));
 });
+
+app.put("/update/:id", (req,res) => {
+    Post.findByIdAndUpdate({_id: req.params.id}, {
+        title: req.body.title,
+        description: req.body.description,
+    })
+    .then((doc) => console.log(doc))
+    .catch((err) => console.log(err));
+});
 app.listen(3001, function () {
     console.log("Express Server is running");
 });
