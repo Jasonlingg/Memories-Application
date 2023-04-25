@@ -1,10 +1,16 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {Button} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
+import Modal from 'react-bootstrap/Modal';
 function Posts() {
     const navigate =useNavigate();
     const [posts, setPosts] = useState([]);
+    
+    const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 useEffect(() => {
     axios
     .get("/posts")
@@ -24,6 +30,11 @@ const deletePost = (id) => {
 
     window.location.reload();
 };
+
+const updatePost = (post) => {
+    console.log(post);
+    handleShow();
+}
     return(
         <div 
         key={posts._id}
@@ -33,6 +44,30 @@ const deletePost = (id) => {
             onClick={() => navigate(-1)}
             style={{width:"100%", marginBoottom:"1rem"}}
             variant="outline-dark">BACK</button>
+            <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            <Form>
+                <Form.GrouP>
+                    <Form.Control style={{marginBopttom:"1rem"}} placeholder="title"/>
+
+                    <Form.Control placeholder="description"/>
+                </Form.GrouP>
+            </Form>
+            </Modal.Body>
+        <Modal.Footer>
+          <Button 
+            variant="secondary" 
+            onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose} onClick={handleShow}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
             {posts ? (
                 <>
                 {posts.map(post => {
@@ -52,11 +87,16 @@ const deletePost = (id) => {
                                 justifyContent: "space-between"}}>
                             <Button 
                                 style={{marginRight: "1rem"}}
-                                variant="outline-info">Update</Button>
-                            <Button onClick={() => deletePost(post._id)}
+                                variant="outline-info"
+                                onClick={() => updatePost(post)}>
+                                    Update
+                            </Button>
+                            <Button 
+                                onClick={() => deletePost(post._id)}
                                 style={{marginRight: "1rem"}}
-                                variant="outline-danger"
-                                >Delete</Button>
+                                variant="outline-danger">
+                                    Delete
+                            </Button>
                             </div>
                         </div>
                     );
