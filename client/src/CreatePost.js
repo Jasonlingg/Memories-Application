@@ -36,9 +36,9 @@ function CreatePost() {
 
 
     return(
-        <body className="backhome flex items-center justify-center " style={{height: '100vh'}}>
+        <body className="backhome px-5 py-11 font-mono" style={{height: '100vh'}}>
         <div>
-            <h1 className= "text-center text-white">Create a post</h1>
+            <h1 className= "text-center text-white p-3">Create a post</h1>
             <Form>
                 <Form.Group>
                    <Form.Control 
@@ -65,6 +65,12 @@ function CreatePost() {
           CREATE POST
         </Button>
             </Form>
+            <Button 
+            style={{width: "100%", marginBottom:"1rem"}} 
+            variant={"outline-light"}
+            onClick={() => navigate("posts")}
+            >EXISTING POSTS
+            </Button>
             <Button 
             style={{width: "100%", marginBottom:"1rem"}} 
             variant={"outline-light"}

@@ -56,14 +56,15 @@ const saveUpdatedPost = (e) => {
 };
     return(
         <div 
-        className="backhome text-white font-mono"
+        className="backhome text-white font-mono p-10"
         key={posts._id}
         style={{textAlign:"center", margin: "auto auto", height: '100vh'}}>
-            <h1>Posts page</h1>
-            <button 
+            <h1>All Posts</h1>
+            <Button 
             onClick={() => navigate(-1)}
-            style={{width:"100%", marginBoottom:"1rem"}}
-            variant="outline-dark">BACK</button>
+            variant="outline-light"
+            style={{marginBottom:"1rem"}}
+            >BACK</Button>
             <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Editing Post</Modal.Title>
@@ -72,14 +73,14 @@ const saveUpdatedPost = (e) => {
             <Form>
                 <Form.Group>
                     <Form.Control 
-                    style={{marginBopttom:"1rem"}} 
+                    style={{marginBottom:"1rem"}} 
                     placeholder="title"
                     name="title"
                     value={updatedPost.title ? updatedPost.title : ""}
                     onChange={handleChange}
                     />
                     <Form.Control 
-                    style={{marginBopttom:"1rem"}} 
+                    style={{marginBottom:"1rem"}} 
                     placeholder="description"
                     name="description"
                     value={updatedPost.description ? updatedPost.description : ""}
@@ -94,7 +95,7 @@ const saveUpdatedPost = (e) => {
             onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" 
+          <Button variant="info" 
           onClick={saveUpdatedPost} >
             Save Changes
           </Button>
@@ -105,7 +106,7 @@ const saveUpdatedPost = (e) => {
                 {posts.map(post => {
                     return(
                         <div style={{
-                        border:"solid lightgray 1px", 
+                        border:"solid lightgray 3px", 
                         borderRadius: "8px", 
                         marginBottom: "1rem",
                         padding: "1rem",
@@ -121,13 +122,13 @@ const saveUpdatedPost = (e) => {
                                 style={{marginRight: "1rem"}}
                                 variant="outline-info"
                                 onClick={() => updatePost(post)}>
-                                    Update
+                                    UPDATE
                             </Button>
                             <Button 
                                 onClick={() => deletePost(post._id)}
                                 style={{marginRight: "1rem"}}
                                 variant="outline-danger">
-                                    Delete
+                                    DELETE
                             </Button>
                             </div>
                         </div>
