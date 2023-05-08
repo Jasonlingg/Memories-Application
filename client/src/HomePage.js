@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import { useState, useEffect } from 'react';
 import './App.css';
 
-const homePageText = ["Welcome to my posts!!!","Click the button below to view." ];
+const homePageText = ["Welcome to my posts" ];
 
 const useTyped = (homePageText) => {
     const [typed, setTyped] = useState('');
@@ -22,12 +22,21 @@ function HomePage (){
     const text = useTyped(homePageText);
     const navigate = useNavigate();
     return (
-        <body className="backhome" style={{height: '100vh'}}>
-        <h1 className="text-white blinking-cursor">
+        <>
+        
+        <body className="backhome text-center flex items-center justify-center " style={{height: '100vh'}}>
+        <div className="text-9xl" style={{whiteSpace: 'pre-line'}}>
+        &#128204;
+        </div>
+        <div className="text-white blinking-cursor text-7xl font-mono hover:font-mono hover:bold">
             {text}
-            </h1>
+        </div>
+                <div className="text-9xl" style={{whiteSpace: 'pre-line'}}>
+        &#128204;
+        </div>
         <Button className="object-center" onClick={() => navigate("create")} >NEXT</Button>
       </body>
+      </>
     )
 }
 export default HomePage;

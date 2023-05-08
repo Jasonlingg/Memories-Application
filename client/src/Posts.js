@@ -56,8 +56,9 @@ const saveUpdatedPost = (e) => {
 };
     return(
         <div 
+        className="backhome text-white font-mono"
         key={posts._id}
-        style={{textAlign:"center", margin: "auto auto"}}>
+        style={{textAlign:"center", margin: "auto auto", height: '100vh'}}>
             <h1>Posts page</h1>
             <button 
             onClick={() => navigate(-1)}
@@ -65,7 +66,7 @@ const saveUpdatedPost = (e) => {
             variant="outline-dark">BACK</button>
             <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Editing Post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <Form>

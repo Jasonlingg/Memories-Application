@@ -36,8 +36,9 @@ function CreatePost() {
 
 
     return(
+        <body className="backhome flex items-center justify-center " style={{height: '100vh'}}>
         <div>
-            <h1 style={{textAlign: "center"}}>Create a post</h1>
+            <h1 className= "text-center text-white">Create a post</h1>
             <Form>
                 <Form.Group>
                    <Form.Control 
@@ -48,6 +49,7 @@ function CreatePost() {
                    onChange={handleChange} 
                    />
                    <Form.Control 
+                   as="textarea"
                    name="description" 
                    value={post.description}
                    placeholder="Description" 
@@ -57,7 +59,7 @@ function CreatePost() {
                 </Form.Group>
                 <Button
             onClick={handleClick}
-            variant="outline-success"
+            variant="outline-light"
             style={{ width: "100%", marginBottom: "1rem" }}
         >
           CREATE POST
@@ -65,11 +67,12 @@ function CreatePost() {
             </Form>
             <Button 
             style={{width: "100%", marginBottom:"1rem"}} 
-            variant={"outline-dark"}
+            variant={"outline-light"}
             onClick={() => navigate(-1)}
             >BACK
             </Button>
         </div>
+        </body>
     );
 }
 
