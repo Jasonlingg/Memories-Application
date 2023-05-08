@@ -56,10 +56,10 @@ const saveUpdatedPost = (e) => {
 };
     return(
         <div 
-        className="backhome text-white font-mono p-10"
+        className="backhome text-white font-mono py-11 px-8"
         key={posts._id}
         style={{textAlign:"center", margin: "auto auto", height: '100vh'}}>
-            <h1>All Posts</h1>
+            <h1>ALL POSTS</h1>
             <Button 
             onClick={() => navigate(-1)}
             variant="outline-light"

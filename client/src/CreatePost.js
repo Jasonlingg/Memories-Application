@@ -36,9 +36,9 @@ function CreatePost() {
 
 
     return(
-        <body className="backhome px-5 py-11 font-mono" style={{height: '100vh'}}>
+        <body className="backhome px-32 py-11 font-mono" style={{height: '100vh'}}>
         <div>
-            <h1 className= "text-center text-white p-3">Create a post</h1>
+            <h1 className= "text-center text-white pb-3">CREATE A POST</h1>
             <Form>
                 <Form.Group>
                    <Form.Control 

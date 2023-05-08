@@ -23,7 +23,7 @@ function HomePage (){
     const navigate = useNavigate();
     return (
         <>
-        <body className="backhome text-center pt-10 space-y-12 font-mono" style={{height: '100vh'}}>
+        <body className="backhome text-center pt-24 space-y-12 font-mono" style={{height: '100vh'}}>
         <div className="text-9xl" style={{whiteSpace: 'pre-line'}}>
         &#128204;
         </div>
