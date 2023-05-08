@@ -1,14 +1,9 @@
 import './App.css';
-import {Button} from "react-bootstrap";
-import {useNavigate} from "react-router-dom";
-
+import "tailwindcss/tailwind.css";
+import HomePage from './HomePage';
 function App() {
-  const navigate = useNavigate();
   return (
-    <div className="App">
-      <h1>Home page</h1>
-      <Button onClick={() => navigate("create")}>NEXT</Button>
-    </div>
+    <HomePage />
   );
 }
 
