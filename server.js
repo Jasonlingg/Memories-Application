@@ -1,3 +1,5 @@
+require("dotenv").config();
+const path = require("path")
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -8,7 +10,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(cors());
 
 mongoose
-    .connect("mongodb://127.0.0.1:27017/myPostsdb")
+    .connect(process.env.MONGO_URI)
     .catch((err) => console.log(err));
 
 
